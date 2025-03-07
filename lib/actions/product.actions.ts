@@ -1,5 +1,6 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
+// import { prisma } from '@/db/prisma'
 import { LATEST_PRODUCTS_LIMIT } from "../constants";
 import { convertToPlainObject } from '@/lib/utils';
 
