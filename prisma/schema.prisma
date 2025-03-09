@@ -23,8 +23,8 @@ model Product {
   brand       String
   description String
   stock       Int
-  price       Decimal  @default(0) @db.Decimal(12, 2)
-  rating      Decimal  @default(0) @db.Decimal(3, 2)
+  price       String
+  rating      String
   numReviews  Int      @default(0)
   isFeatured  Boolean  @default(false)
   banner      String?
