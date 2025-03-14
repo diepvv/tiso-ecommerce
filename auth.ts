@@ -3,9 +3,9 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/db/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compareSync } from "bcrypt-ts-edge";
-import type { NextAuthOptions } from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+
+export const { auth, signIn, signOut, handlers } = NextAuth({
   pages: {
     signIn: "/sign-in",
     error: "/sign-in",
@@ -63,6 +63,4 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-};
-
-export const { handlers , auth, signIn, signOut } = NextAuth(authOptions);
+});
