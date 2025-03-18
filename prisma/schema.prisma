@@ -45,6 +45,8 @@ model User {
   updatedAt     DateTime  @updatedAt
   account       Account[]
   session       Session[]
+
+  Cart Cart[]
 }
 
 model Account {
@@ -84,4 +86,17 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+}
+
+model Cart {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId String? @db.Uuid
+  sessionCartId String
+  items Json[] @default([]) @db.Json
+  itemsPrice String
+  shippingPrice String
+  totalPrice String
+  taxPrice String
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
